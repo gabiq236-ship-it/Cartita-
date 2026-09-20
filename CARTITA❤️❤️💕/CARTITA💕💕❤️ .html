@@ -1,0 +1,4517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
+
+<title>Feliz cumpleaños mi niña</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:Georgia,serif;
+    background:#111;
+    color:white;
+    overflow-x:hidden;
+}
+
+.screen{
+    display:none;
+    min-height:100vh;
+    width:100%;
+    position:relative;
+}
+
+.screen.active{
+    display:flex;
+}
+
+/* =========================================================
+   FONDO MINECRAFT
+========================================================= */
+
+#intro,
+#letter,
+#menuNiveles,
+#juego,
+#juego6{
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.60)
+        ),
+        url("MINECRAFT.jpg")
+        center/cover fixed;
+
+}
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.minecraft-button{
+
+    border:4px solid #222;
+
+    background:#777;
+
+    color:white;
+
+    padding:14px 25px;
+
+    font-family:monospace;
+
+    font-weight:bold;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    box-shadow:
+        inset 3px 3px rgba(255,255,255,.2),
+        inset -3px -3px rgba(0,0,0,.4),
+        0 5px 0 #222;
+
+    transition:.15s;
+
+}
+
+.minecraft-button:hover{
+
+    filter:brightness(1.15);
+
+    transform:translateY(-2px);
+
+}
+
+.minecraft-button:active{
+
+    transform:translateY(3px);
+
+    box-shadow:0 2px 0 #222;
+
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#intro{
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    overflow:hidden;
+    padding:20px;
+
+}
+
+#intro h1{
+
+    font-size:
+        clamp(
+            27px,
+            5vw,
+            60px
+        );
+
+    color:white;
+
+    text-shadow:
+        4px 4px 0 #222,
+        0 0 15px rgba(255,255,255,.4);
+
+    margin-bottom:30px;
+
+    z-index:10;
+
+}
+
+.static-diamond{
+
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    margin-bottom:20px;
+
+    animation:
+        diamondFloat
+        2s
+        ease-in-out
+        infinite;
+
+    z-index:10;
+
+}
+
+@keyframes diamondFloat{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-5deg);
+    }
+
+    50%{
+        transform:
+            translateY(-15px)
+            rotate(5deg);
+    }
+
+}
+
+.diamond{
+
+    position:absolute;
+    width:55px;
+    height:55px;
+    object-fit:contain;
+
+    animation:
+        fall
+        linear
+        infinite;
+
+    pointer-events:none;
+
+}
+
+@keyframes fall{
+
+    from{
+
+        top:-100px;
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to{
+
+        top:110vh;
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+.question-box{
+
+    position:relative;
+    z-index:20;
+
+    background:
+        rgba(25,25,25,.94);
+
+    border:6px solid #3a3a3a;
+
+    padding:35px 45px;
+
+    box-shadow:
+        0 0 0 4px #111,
+        0 15px 40px rgba(0,0,0,.8);
+
+}
+
+.question-box h2{
+
+    font-family:monospace;
+    margin-bottom:25px;
+
+}
+
+.buttons{
+
+    display:flex;
+    justify-content:center;
+    gap:20px;
+
+}
+
+.yes{
+    background:#4d8c35;
+}
+
+.no{
+    background:#8c3030;
+}
+
+/* =========================================================
+   CARTA
+========================================================= */
+
+#letter{
+
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    overflow:auto;
+
+}
+
+.letter-container{
+
+    width:min(950px,95vw);
+    text-align:center;
+
+}
+
+.letter-title{
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            55px
+        );
+
+    font-style:italic;
+
+    margin-bottom:12px;
+
+    text-shadow:3px 3px #222;
+
+}
+
+.letter-subtitle{
+
+    font-family:monospace;
+    color:#ddd;
+    margin-bottom:35px;
+
+}
+
+.envelope{
+
+    width:300px;
+    height:200px;
+    margin:auto;
+
+    background:#8d1111;
+
+    border:7px solid #421010;
+
+    position:relative;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 0 4px #111,
+        0 20px 40px rgba(0,0,0,.8);
+
+    animation:
+        envelopeFloat
+        2.5s
+        ease-in-out
+        infinite;
+
+}
+
+@keyframes envelopeFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+.envelope::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    border-left:
+        143px solid transparent;
+
+    border-right:
+        143px solid transparent;
+
+    border-top:
+        100px solid #b51b1b;
+
+    z-index:2;
+
+}
+
+.envelope::after{
+
+    content:"❤️";
+
+    position:absolute;
+
+    left:50%;
+    top:52%;
+
+    transform:
+        translate(-50%,-50%);
+
+    font-size:55px;
+
+    z-index:4;
+
+}
+
+.envelope-text{
+
+    position:absolute;
+
+    bottom:15px;
+
+    left:0;
+    right:0;
+
+    font-family:monospace;
+    font-weight:bold;
+
+    z-index:5;
+
+}
+
+.paper{
+
+    display:none;
+
+    width:min(900px,94vw);
+
+    max-height:75vh;
+
+    overflow-y:auto;
+
+    background:
+        linear-gradient(
+            rgba(235,220,185,.98),
+            rgba(205,185,145,.98)
+        );
+
+    color:#351d0d;
+
+    padding:40px;
+
+    border:8px solid #5a3a20;
+
+    box-shadow:
+        0 0 0 5px #171717,
+        0 20px 50px rgba(0,0,0,.8);
+
+    animation:
+        paperOpen
+        .7s
+        ease;
+
+    text-align:left;
+
+}
+
+@keyframes paperOpen{
+
+    from{
+
+        transform:
+            scale(.1)
+            rotateX(90deg);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:
+            scale(1)
+            rotateX(0);
+
+        opacity:1;
+
+    }
+
+}
+
+.paper h2{
+
+    text-align:center;
+    margin-bottom:25px;
+
+}
+
+.paper p{
+
+    line-height:1.8;
+    margin-bottom:22px;
+    font-size:17px;
+
+}
+
+.start-adventure{
+
+    display:block;
+    margin:30px auto 0;
+    background:#3d6628;
+
+}
+
+/* =========================================================
+   MENÚ
+========================================================= */
+
+#menuNiveles{
+
+    flex-direction:column;
+
+    align-items:center;
+
+    padding:
+        35px
+        20px
+        50px;
+
+    overflow:auto;
+
+}
+
+.menu-title{
+
+    font-family:monospace;
+
+    font-size:
+        clamp(
+            30px,
+            5vw,
+            60px
+        );
+
+    text-shadow:4px 4px #222;
+
+    margin-bottom:10px;
+
+    text-align:center;
+
+}
+
+.progress-text{
+
+    font-family:monospace;
+    margin-bottom:30px;
+    font-size:18px;
+
+}
+
+.level-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                180px,
+                260px
+            )
+        );
+
+    gap:22px;
+
+    justify-content:center;
+
+    width:100%;
+
+}
+
+.level-card{
+
+    min-height:220px;
+
+    border:6px solid #333;
+
+    background:
+        rgba(30,30,30,.96);
+
+    cursor:pointer;
+
+    position:relative;
+
+    box-shadow:
+        0 0 0 3px #111,
+        0 10px 25px rgba(0,0,0,.7);
+
+    transition:.2s;
+
+}
+
+.level-card:hover{
+    transform:scale(1.04);
+}
+
+.level-card img{
+
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    display:block;
+
+}
+
+.level-name{
+
+    font-family:monospace;
+    font-weight:bold;
+    text-align:center;
+    padding:13px 5px;
+
+}
+
+.locked{
+
+    cursor:not-allowed;
+    filter:grayscale(1);
+    opacity:.72;
+
+}
+
+.locked:hover{
+    transform:none;
+}
+
+.locked-image{
+
+    height:160px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:70px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #252525 0,
+            #252525 10px,
+            #303030 10px,
+            #303030 20px
+        );
+
+    font-family:monospace;
+
+}
+
+.completed::after{
+
+    content:"✓";
+
+    position:absolute;
+
+    right:8px;
+    top:8px;
+
+    background:#4d8c35;
+
+    border:3px solid #17240f;
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-weight:bold;
+    font-size:24px;
+
+}
+
+/* =========================================================
+   JUEGOS
+========================================================= */
+
+#juego{
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    padding:20px;
+    text-align:center;
+
+}
+
+.game-box{
+
+    width:min(1000px,95vw);
+
+    background:
+        rgba(30,25,18,.96);
+
+    border:7px solid #51351e;
+
+    box-shadow:
+        0 0 0 4px #111,
+        0 20px 50px rgba(0,0,0,.8);
+
+    padding:25px;
+
+}
+
+.game-title{
+
+    font-family:monospace;
+
+    font-size:
+        clamp(
+            25px,
+            4vw,
+            42px
+        );
+
+    margin-bottom:10px;
+
+}
+
+.game-description{
+
+    margin-bottom:20px;
+    color:#ddd;
+
+}
+
+.game-stats{
+
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+
+    font-family:monospace;
+    margin-bottom:20px;
+
+}
+
+.back-menu{
+    margin-top:25px;
+}
+
+/* =========================================================
+   NIVEL 1
+========================================================= */
+
+#cakeArea{
+
+    width:min(800px,90vw);
+    height:450px;
+    position:relative;
+    overflow:hidden;
+
+    border:7px solid #392719;
+
+    background:
+        linear-gradient(
+            rgba(40,25,10,.4),
+            rgba(20,10,5,.7)
+        ),
+        url("MINECRAFT.jpg")
+        center/cover;
+
+}
+
+#cakeTarget{
+
+    width:70px;
+    height:70px;
+
+    position:absolute;
+
+    object-fit:contain;
+
+    cursor:pointer;
+    user-select:none;
+
+    transition:
+        left .12s,
+        top .12s;
+
+}
+
+/* =========================================================
+   NIVEL 2
+========================================================= */
+
+#maze{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(15,30px);
+
+    grid-template-rows:
+        repeat(15,30px);
+
+    justify-content:center;
+
+    margin:auto;
+
+    background:#111;
+
+}
+
+.cell{
+
+    width:30px;
+    height:30px;
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+.wall{
+    background:#111;
+}
+
+.wall img,
+.trap img,
+.goal img,
+.player img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    display:block;
+
+}
+
+.trap{
+    background:#400;
+}
+
+.goal{
+    background:#164b16;
+}
+
+.player{
+    background:#345b9b;
+}
+
+/* =========================================================
+   NIVEL 3
+========================================================= */
+
+#memoryGrid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,100px);
+
+    gap:10px;
+
+    justify-content:center;
+    margin:20px auto;
+
+}
+
+.memory-card{
+
+    width:100px;
+    height:100px;
+
+    background:#29200f;
+
+    border:4px solid #63451e;
+
+    cursor:pointer;
+    position:relative;
+
+}
+
+.memory-card img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.memory-card.lit{
+
+    box-shadow:
+        0 0 25px 8px #ffe477,
+        0 0 45px #fff;
+
+    border-color:#fff3a0;
+
+}
+
+.memory-card.selected{
+
+    border-color:#61c94a;
+
+    box-shadow:
+        0 0 20px #61c94a;
+
+}
+
+.memory-card.wrong{
+
+    border-color:#d52d2d;
+
+    animation:
+        shake
+        .25s;
+
+}
+
+@keyframes shake{
+
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-8px);
+    }
+
+    75%{
+        transform:translateX(8px);
+    }
+
+}
+
+/* =========================================================
+   NIVEL 4
+========================================================= */
+
+.code-display{
+
+    font-family:monospace;
+
+    font-size:45px;
+
+    letter-spacing:12px;
+
+    background:#160f09;
+
+    border:5px solid #63451e;
+
+    padding:15px;
+
+    margin:20px auto;
+
+    width:min(400px,90%);
+
+}
+
+.keypad{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,80px);
+
+    gap:10px;
+
+    justify-content:center;
+
+}
+
+.keypad button{
+
+    height:60px;
+
+    font-size:24px;
+    font-weight:bold;
+
+    background:#5a4025;
+    color:white;
+
+    border:4px solid #24180d;
+
+    cursor:pointer;
+
+}
+
+.code-hint{
+
+    margin-top:20px;
+
+    min-height:28px;
+
+    font-family:monospace;
+
+}
+
+/* =========================================================
+   NIVEL 5
+========================================================= */
+
+#reactionArea{
+
+    width:min(800px,90vw);
+
+    height:450px;
+
+    border:7px solid #392719;
+
+    background:
+        linear-gradient(
+            rgba(40,25,10,.35),
+            rgba(20,10,5,.65)
+        ),
+        url("MINECRAFT.jpg")
+        center/cover;
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+#reactionTarget{
+
+    width:50px;
+    height:50px;
+
+    object-fit:contain;
+
+    position:absolute;
+
+    cursor:pointer;
+    user-select:none;
+
+}
+
+/* =========================================================
+   NIVEL 6 — MICHI 3X3
+========================================================= */
+
+#juego6{
+
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.tic-title{
+
+    font-family:monospace;
+
+    font-size:clamp(25px,5vw,42px);
+
+    margin-bottom:10px;
+
+}
+
+.tic-description{
+
+    color:#ddd;
+    margin-bottom:15px;
+
+}
+
+.tic-stats{
+
+    font-family:monospace;
+
+    margin-bottom:15px;
+
+    font-size:17px;
+
+}
+
+/* EXACTAMENTE 9 CASILLAS: 3 COLUMNAS × 3 FILAS */
+
+.tic-board{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,110px);
+
+    grid-template-rows:repeat(3,110px);
+
+    gap:7px;
+
+    justify-content:center;
+
+    margin:20px auto;
+
+}
+
+.tic-cell{
+
+    width:110px;
+    height:110px;
+
+    background:
+        linear-gradient(
+            #6b4b2a,
+            #4d351d
+        );
+
+    border:5px solid #24170c;
+
+    box-shadow:
+        inset 3px 3px rgba(255,255,255,.12),
+        inset -4px -4px rgba(0,0,0,.3);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-family:monospace;
+
+    font-size:70px;
+    font-weight:bold;
+
+    cursor:pointer;
+    user-select:none;
+
+}
+
+.tic-cell:hover{
+    filter:brightness(1.15);
+}
+
+.tic-cell.x{
+
+    color:#65a8ff;
+
+    text-shadow:
+        3px 3px #172d52;
+
+}
+
+.tic-cell.o{
+
+    color:#ff6b55;
+
+    text-shadow:
+        3px 3px #4b1710;
+
+}
+
+.tic-message{
+
+    min-height:30px;
+
+    font-family:monospace;
+    font-weight:bold;
+
+    margin-top:10px;
+
+}
+
+.tic-attempt{
+
+    font-family:monospace;
+
+    color:#ffcf5a;
+
+}
+
+@media(max-width:600px){
+
+    .tic-board{
+
+        grid-template-columns:repeat(3,85px);
+
+        grid-template-rows:repeat(3,85px);
+
+        gap:6px;
+
+    }
+
+    .tic-cell{
+
+        width:85px;
+        height:85px;
+
+        font-size:55px;
+
+    }
+
+}
+
+/* =========================================================
+   TRANSICIÓN FINAL
+========================================================= */
+
+#pantallaTransicion{
+
+    background:#000;
+
+    color:white;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    z-index:2000;
+
+}
+
+#transicionTexto{
+
+    font-family:monospace;
+
+    font-size:clamp(20px,5vw,45px);
+
+    font-weight:bold;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:white;
+
+    text-shadow:
+        4px 0 #7d00ff,
+        -4px 0 #00eaff,
+        0 0 20px white;
+
+    opacity:1;
+
+}
+
+.transicion-glitch{
+
+    animation:
+        glitchText .14s infinite;
+
+}
+
+@keyframes glitchText{
+
+    0%{
+        transform:translate(0,0);
+        opacity:1;
+    }
+
+    20%{
+        transform:translate(-8px,3px);
+        opacity:.4;
+    }
+
+    40%{
+        transform:translate(7px,-4px);
+        opacity:1;
+    }
+
+    60%{
+        transform:translate(-5px,2px);
+        opacity:.2;
+    }
+
+    80%{
+        transform:translate(5px,-2px);
+        opacity:1;
+    }
+
+    100%{
+        transform:translate(0,0);
+        opacity:.5;
+    }
+
+}
+
+.screen-flash{
+
+    animation:
+        screenFlash .12s infinite;
+
+}
+
+@keyframes screenFlash{
+
+    0%{
+        filter:brightness(1);
+    }
+
+    25%{
+        filter:brightness(3);
+    }
+
+    50%{
+        filter:brightness(.1);
+    }
+
+    75%{
+        filter:brightness(2.5);
+    }
+
+    100%{
+        filter:brightness(1);
+    }
+
+}
+
+/* =========================================================
+   PANTALLA NEGRA
+========================================================= */
+
+#pantallaNegra{
+
+    background:#000;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    z-index:3000;
+
+}
+
+.black-message{
+
+    font-family:monospace;
+
+    font-size:clamp(18px,4vw,35px);
+
+    color:#fff;
+
+    animation:
+        blackFade
+        2s
+        infinite alternate;
+
+}
+
+@keyframes blackFade{
+
+    from{
+        opacity:.25;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+#pantallaFinal{
+
+    background:#eee3c6 !important;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:25px;
+
+    color:#35230f;
+
+    overflow:auto;
+
+    z-index:4000;
+
+}
+
+.final-box{
+
+    width:min(900px,95vw);
+
+    padding:35px 25px;
+
+}
+
+.final-cake{
+
+    width:min(420px,80vw);
+
+    max-height:330px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:0 auto 25px;
+
+    image-rendering:pixelated;
+
+    filter:
+        drop-shadow(
+            0 15px 15px
+            rgba(0,0,0,.25)
+        );
+
+    animation:
+        cakeFinalAppear
+        1.5s
+        ease;
+
+}
+
+@keyframes cakeFinalAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            scale(.2)
+            translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+.final-box h1{
+
+    font-family:monospace;
+
+    font-size:
+        clamp(
+            30px,
+            6vw,
+            60px
+        );
+
+    margin-bottom:25px;
+
+    color:#4a2c13;
+
+    text-shadow:
+        2px 2px rgba(255,255,255,.7);
+
+}
+
+.final-box p{
+
+    font-size:
+        clamp(
+            17px,
+            2vw,
+            21px
+        );
+
+    line-height:1.8;
+
+    color:#382615;
+
+    font-weight:bold;
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:700px){
+
+    .paper{
+        padding:25px 20px;
+    }
+
+    .paper p{
+        font-size:15px;
+    }
+
+    .envelope{
+        width:260px;
+        height:175px;
+    }
+
+    .envelope::before{
+
+        border-left-width:123px;
+        border-right-width:123px;
+        border-top-width:88px;
+
+    }
+
+    .level-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:12px;
+
+    }
+
+    .level-card{
+        min-height:175px;
+    }
+
+    .level-card img,
+    .locked-image{
+        height:115px;
+    }
+
+    #cakeArea,
+    #reactionArea{
+        height:380px;
+    }
+
+    #maze{
+
+        grid-template-columns:
+            repeat(15,22px);
+
+        grid-template-rows:
+            repeat(15,22px);
+
+    }
+
+    .cell{
+
+        width:22px;
+        height:22px;
+
+    }
+
+    #memoryGrid{
+
+        grid-template-columns:
+            repeat(4,72px);
+
+        gap:7px;
+
+    }
+
+    .memory-card{
+
+        width:72px;
+        height:72px;
+
+    }
+
+    .keypad{
+
+        grid-template-columns:
+            repeat(3,65px);
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<section id="intro" class="screen active">
+
+    <img
+        class="diamond"
+        src="d055c9d6-e1f5-4237-b792-5f7230956975.png"
+        style="left:8%;animation-duration:5s;"
+    >
+
+    <img
+        class="diamond"
+        src="d055c9d6-e1f5-4237-b792-5f7230956975.png"
+        style="left:25%;animation-duration:7s;animation-delay:1s;"
+    >
+
+    <img
+        class="diamond"
+        src="d055c9d6-e1f5-4237-b792-5f7230956975.png"
+        style="left:47%;animation-duration:6s;animation-delay:2s;"
+    >
+
+    <img
+        class="diamond"
+        src="d055c9d6-e1f5-4237-b792-5f7230956975.png"
+        style="left:70%;animation-duration:8s;animation-delay:.5s;"
+    >
+
+    <img
+        class="diamond"
+        src="d055c9d6-e1f5-4237-b792-5f7230956975.png"
+        style="left:88%;animation-duration:6.5s;animation-delay:3s;"
+    >
+
+    <img
+        class="static-diamond"
+        src="d055c9d6-e1f5-4237-b792-5f7230956975.png"
+    >
+
+    <h1>
+        FELIIIZ CUMPLEAÑOOOOOS MOOOR 🥺❤️❤️💕
+    </h1>
+
+    <div class="question-box">
+
+        <h2>
+            ¿LISTA PARA EL JUEGO?
+        </h2>
+
+        <div class="buttons">
+
+            <button
+                class="minecraft-button yes"
+                id="yesButton"
+            >
+                SÍ
+            </button>
+
+            <button
+                class="minecraft-button no"
+                id="noButton"
+            >
+                NO
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     CARTA
+========================================================= -->
+
+<section id="letter" class="screen">
+
+    <div class="letter-container">
+
+        <h1 class="letter-title">
+            Esto es para ti mi niña ❤️❤️💕
+        </h1>
+
+        <p class="letter-subtitle">
+            UNA PEQUEÑA SORPRESA PREPARADA PARA TI...
+        </p>
+
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-text">
+                HAZ CLICK PARA ABRIR
+            </div>
+
+        </div>
+
+        <div class="paper" id="paper">
+
+            <h2>
+                PARA TI ❤️
+            </h2>
+
+            <p>
+                Bueno mi niña FELIIIZ CUMPLEAÑOOOS, hoyyy un añitooo mas paraaa tiii mi amool, se que no te gusta crecer pero no será la única q crecerá sino vamos a crecer juntos, ps hoyyy seeraa un día fantasticooo y espero q la pases bien con los labubus puues, bueno quiero hacerte saber que te quiero muchotazooo, me alegra pasar un cumpleaños tuyo contigo y verte crecer o bueno vernos crecer juntos, la canción q puse es lo q sono ese día el cual te estaba limpiando la herida y sentía como te cuidaba y te seguiré cuidando, igual como tu haces lo mismo por mi como el día q cerraste mi herida con algodón, pues espero q te divierta esta pekeña codificación preparada por mi paraaa el amoor de mi vidaa oseaa TUUU,
+            </p>
+
+            <p>
+                TE AMOOOTEAMOOO ENSERIO TE AMO, NUNCA TE ME VAYAS PORFAVOR TE LO RUEGOOO ENSERIOOOO, EREEES UNA HERMOSA PERSONITA EREEES INCREIBLEEE, FANTASTICA, INTELIGENTEEE, HERMOSA, BRILLANTE, ALEGREEE, SIMPATICA, AMABLEEE, EMPATICAAA, RESPETUOSAAA, ALEGREEE Y MAS,
+            </p>
+
+            <p>
+                TU AMOOR ES ALGO ETÉREO, OSEAAA ALGOOO IRREAL, ME HACES SENTIR COSAS TAN PROFUNDAS, Y CREEME NO HAY MUJER QUE TE IGUALE, EN MIS OJOS TU ERES LA UNICA MUJER A LA CUAL AMOOO Y LA CUAL AMARE TODA MI VIDA HASTA SER UN ESPIRITU O RENCARNE,
+            </p>
+
+            <p>
+                TEE MERECES LO MEJOOOR EREEES AHHHHH Q GANAAS DE ESTAR HAY Y DECIRTE TODO LO Q ESTOY ESCRIBIENDO AHORITA PEROOO OSEAAA AHHH, BUENOOO IGUAL TEE AMOOO MI NIÑAA HERMOSA NUNCA PIENSES LO CONTRARIO, EREEES UNICA ENTRE MUCHAS PERSONAS,buenoo sin mas q decir comenzemooos🥺💕💕💕💕❤️❤️
+            </p>
+
+            <button
+                class="minecraft-button start-adventure"
+                id="startAdventure"
+                type="button"
+                onclick="startAdventure()"
+            >
+                COMENZAR LA AVENTURA
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     MENÚ
+========================================================= -->
+
+<section id="menuNiveles" class="screen">
+
+    <h1 class="menu-title">
+        LISTA PARA EL JUEGO
+    </h1>
+
+    <div
+        class="progress-text"
+        id="progressText"
+    >
+        PROGRESO: 0 / 6
+    </div>
+
+    <div
+        class="level-grid"
+        id="levelGrid"
+    ></div>
+
+    <button
+        class="minecraft-button back-menu"
+        id="resetButton"
+        type="button"
+    >
+        REINICIAR PROGRESO
+    </button>
+
+</section>
+
+<!-- =========================================================
+     JUEGOS 1-5
+========================================================= -->
+
+<section id="juego" class="screen">
+
+    <div class="game-box">
+
+        <h1
+            class="game-title"
+            id="gameTitle"
+        >
+            NIVEL
+        </h1>
+
+        <p
+            class="game-description"
+            id="gameDescription"
+        ></p>
+
+        <div
+            class="game-stats"
+            id="gameStats"
+        ></div>
+
+        <div
+            id="game1"
+            style="display:none"
+        >
+
+            <div id="cakeArea">
+
+                <img
+                    id="cakeTarget"
+                    src="torta.jpg"
+                    alt="objetivo"
+                >
+
+            </div>
+
+        </div>
+
+        <div
+            id="game2"
+            style="display:none"
+        >
+
+            <div id="maze"></div>
+
+            <div style="margin-top:20px">
+
+                <button
+                    class="minecraft-button"
+                    type="button"
+                    onclick="moveMaze('up')"
+                >
+                    ▲
+                </button>
+
+            </div>
+
+            <div>
+
+                <button
+                    class="minecraft-button"
+                    type="button"
+                    onclick="moveMaze('left')"
+                >
+                    ◀
+                </button>
+
+                <button
+                    class="minecraft-button"
+                    type="button"
+                    onclick="moveMaze('down')"
+                >
+                    ▼
+                </button>
+
+                <button
+                    class="minecraft-button"
+                    type="button"
+                    onclick="moveMaze('right')"
+                >
+                    ▶
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            id="game3"
+            style="display:none"
+        >
+
+            <div id="memoryGrid"></div>
+
+        </div>
+
+        <div
+            id="game4"
+            style="display:none"
+        >
+
+            <div
+                class="code-display"
+                id="codeDisplay"
+            >
+                ----
+            </div>
+
+            <div class="keypad">
+
+                <button onclick="pressCode(1)">1</button>
+                <button onclick="pressCode(2)">2</button>
+                <button onclick="pressCode(3)">3</button>
+
+                <button onclick="pressCode(4)">4</button>
+                <button onclick="pressCode(5)">5</button>
+                <button onclick="pressCode(6)">6</button>
+
+                <button onclick="pressCode(7)">7</button>
+                <button onclick="pressCode(8)">8</button>
+                <button onclick="pressCode(9)">9</button>
+
+                <button onclick="clearCode()">C</button>
+                <button onclick="pressCode(0)">0</button>
+                <button onclick="submitCode()">✓</button>
+
+            </div>
+
+            <div
+                class="code-hint"
+                id="codeHint"
+            ></div>
+
+        </div>
+
+        <div
+            id="game5"
+            style="display:none"
+        >
+
+            <div id="reactionArea">
+
+                <img
+                    id="reactionTarget"
+                    src="d055c9d6-e1f5-4237-b792-5f7230956975.png"
+                    alt="diamante"
+                >
+
+            </div>
+
+        </div>
+
+        <button
+            class="minecraft-button back-menu"
+            type="button"
+            onclick="backToMenu()"
+        >
+            VOLVER A NIVELES
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     NIVEL 6 — MICHI
+========================================================= -->
+
+<section id="juego6" class="screen">
+
+    <div class="game-box">
+
+        <h1 class="tic-title">
+            NIVEL 6 — LA ÚLTIMA MISIÓN
+        </h1>
+
+        <p class="tic-description">
+            ¡Juega MICHI contra el BOT! Tú eres ❌.
+        </p>
+
+        <div class="tic-stats">
+
+            INTENTO:
+            <span
+                id="ticAttempt"
+                class="tic-attempt"
+            >
+                1
+            </span>
+            / 9
+
+        </div>
+
+        <!-- 9 CASILLAS -->
+        <div
+            class="tic-board"
+            id="ticBoard"
+        ></div>
+
+        <div
+            class="tic-message"
+            id="ticMessage"
+        >
+            ¡Haz tu movimiento!
+        </div>
+
+        <button
+            class="minecraft-button back-menu"
+            onclick="backToMenu()"
+        >
+            VOLVER A NIVELES
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     TRANSICIÓN
+========================================================= -->
+
+<section
+    id="pantallaTransicion"
+    class="screen"
+>
+
+    <div id="transicionTexto">
+        NIVEL 6 COMPLETADO...
+    </div>
+
+</section>
+
+<!-- =========================================================
+     PANTALLA NEGRA
+========================================================= -->
+
+<section
+    id="pantallaNegra"
+    class="screen"
+>
+
+    <div class="black-message">
+        CARGANDO EL ÚLTIMO RECUERDO...
+    </div>
+
+</section>
+
+<!-- =========================================================
+     FINAL
+========================================================= -->
+
+<section
+    id="pantallaFinal"
+    class="screen"
+>
+
+    <div class="final-box">
+
+        <img
+            src="torta.jpg"
+            class="final-cake"
+            alt="Pastel de Minecraft"
+        >
+
+        <h1>
+            🎂 FELIZ CUMPLEAÑOS 🎂
+        </h1>
+
+        <p>
+            Buenooo mi amoool espero q te hayas divertidooo con este juegooo, YYY Q SEAAA UN DÍAAA ESPECTACULAAR PARA TIII, CUIDATE MUCHOOO SIII Y PSS Q LA PASES WAIII CON LOS LABUBUS Y LA ANA, AWWWW ME DA GANAS DE VER LO HERMOSA Q EREEES BUENOO QUIZAAAS ALGUIEEN MANDE UNA FOTO O PSS QUIZAS NOO, BUENOOO IGUAAAAL ESPEROO Q TE DIVIERTAAAS, PQ HOYY ES TU DIAA Y ES DIA DE APROVECHAAR, BUENOOO MI NIÑAAA ACAAA QUEDAAA LOS CODIGOOS, BUENOOO MI AMOOL TE AMOOOO, HOYYY CUMPLEES UN AÑITOOO MAAS MI AMOOL Y PUEES ESTAAS MAS GLANDEE MI PEKEÑAAA, AUN ASIII TE CUIDAREEE Y TE AMAREEE MI NIÑAAA😭💕💕💕❤️
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     AUDIOS
+========================================================= -->
+
+<audio
+    id="music"
+    src="cancion.mp3"
+    loop
+></audio>
+
+<audio
+    id="gameMusic"
+    src="juego.mp3"
+    loop
+></audio>
+
+<script>
+
+/* =========================================================
+   VARIABLES PRINCIPALES
+========================================================= */
+
+const intro =
+    document.getElementById("intro");
+
+const letter =
+    document.getElementById("letter");
+
+const menu =
+    document.getElementById("menuNiveles");
+
+const juego =
+    document.getElementById("juego");
+
+const juego6 =
+    document.getElementById("juego6");
+
+const finalScreen =
+    document.getElementById("pantallaFinal");
+
+const blackScreen =
+    document.getElementById("pantallaNegra");
+
+const transitionScreen =
+    document.getElementById("pantallaTransicion");
+
+const transitionText =
+    document.getElementById("transicionTexto");
+
+const music =
+    document.getElementById("music");
+
+const gameMusic =
+    document.getElementById("gameMusic");
+
+const envelope =
+    document.getElementById("envelope");
+
+const paper =
+    document.getElementById("paper");
+
+/* =========================================================
+   CAMBIAR PANTALLA
+========================================================= */
+
+function showScreen(screen){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(s=>{
+            s.classList.remove("active");
+        });
+
+    screen.classList.add("active");
+
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+document
+    .getElementById("yesButton")
+    .addEventListener("click",()=>{
+
+        showScreen(letter);
+
+    });
+
+const noButton =
+    document.getElementById("noButton");
+
+function dodgeNo(){
+
+    const maxX =
+        Math.max(
+            10,
+            window.innerWidth -
+            noButton.offsetWidth -
+            20
+        );
+
+    const maxY =
+        Math.max(
+            10,
+            window.innerHeight -
+            noButton.offsetHeight -
+            20
+        );
+
+    noButton.style.position="fixed";
+
+    noButton.style.left =
+        Math.random()*maxX+"px";
+
+    noButton.style.top =
+        Math.random()*maxY+"px";
+
+}
+
+noButton.addEventListener(
+    "mouseenter",
+    dodgeNo
+);
+
+noButton.addEventListener(
+    "touchstart",
+    e=>{
+
+        e.preventDefault();
+
+        dodgeNo();
+
+    }
+);
+
+/* =========================================================
+   ABRIR CARTA
+========================================================= */
+
+envelope.addEventListener(
+    "click",
+    ()=>{
+
+        envelope.style.display="none";
+
+        paper.style.display="block";
+
+        music.currentTime=0;
+
+        music.play().catch(()=>{});
+
+    }
+);
+
+/* =========================================================
+   PROGRESO
+========================================================= */
+
+let progress;
+
+try{
+
+    const saved =
+        localStorage.getItem(
+            "minecraftBirthdayProgress"
+        );
+
+    if(saved){
+
+        const parsed =
+            JSON.parse(saved);
+
+        if(
+            Array.isArray(parsed) &&
+            parsed.length===6
+        ){
+
+            progress =
+                parsed.map(Boolean);
+
+        }else{
+
+            progress=[
+                false,false,false,
+                false,false,false
+            ];
+
+        }
+
+    }else{
+
+        progress=[
+            false,false,false,
+            false,false,false
+        ];
+
+    }
+
+}catch(error){
+
+    progress=[
+        false,false,false,
+        false,false,false
+    ];
+
+}
+
+function saveProgress(){
+
+    localStorage.setItem(
+        "minecraftBirthdayProgress",
+        JSON.stringify(progress)
+    );
+
+}
+
+/* =========================================================
+   MÚSICA
+========================================================= */
+
+function startGameMusic(){
+
+    gameMusic.volume=0.8;
+
+    gameMusic.play().catch(()=>{});
+
+}
+
+function stopGameMusic(){
+
+    gameMusic.pause();
+
+    gameMusic.currentTime=0;
+
+}
+
+/* =========================================================
+   COMENZAR AVENTURA
+========================================================= */
+
+function startAdventure(){
+
+    console.log(
+        "Aventura iniciada correctamente"
+    );
+
+    music.pause();
+
+    music.currentTime=0;
+
+    paper.style.display="none";
+
+    envelope.style.display="block";
+
+    startGameMusic();
+
+    renderLevels();
+
+    showScreen(menu);
+
+}
+
+/* =========================================================
+   NIVELES
+========================================================= */
+
+function isUnlocked(id){
+
+    if(id===1){
+        return true;
+    }
+
+    return progress[id-2]===true;
+
+}
+
+function renderLevels(){
+
+    const grid =
+        document.getElementById(
+            "levelGrid"
+        );
+
+    if(!grid){
+        console.error("No existe levelGrid");
+        return;
+    }
+
+    grid.innerHTML="";
+
+    let completed=0;
+
+    progress.forEach(value=>{
+        if(value){
+            completed++;
+        }
+    });
+
+    document
+        .getElementById("progressText")
+        .textContent =
+        `PROGRESO: ${completed} / 6`;
+
+    const levels=[
+
+        {
+            id:1,
+            name:"MADERA",
+            image:"madera.jpg"
+        },
+
+        {
+            id:2,
+            name:"PIEDRA",
+            image:"piedra.jpg"
+        },
+
+        {
+            id:3,
+            name:"HIERRO",
+            image:"hierro.jpg"
+        },
+
+        {
+            id:4,
+            name:"ORO",
+            image:"oro.jpg"
+        },
+
+        {
+            id:5,
+            name:"DIAMANTE",
+            image:"diamante.jpg"
+        },
+
+        {
+            id:6,
+            name:"LA TORTA",
+            image:"torta.jpg"
+        }
+
+    ];
+
+    levels.forEach(level=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className="level-card";
+
+        const unlocked =
+            isUnlocked(level.id);
+
+        const completed =
+            progress[level.id-1];
+
+        if(!unlocked){
+
+            card.classList.add("locked");
+
+            card.innerHTML=`
+
+                <div class="locked-image">
+                    ?
+                </div>
+
+                <div class="level-name">
+                    ${
+                        level.id===6
+                        ? "6. ???????"
+                        : `${level.id}. ${level.name}`
+                    }
+                </div>
+
+            `;
+
+        }else{
+
+            if(completed){
+                card.classList.add("completed");
+            }
+
+            card.innerHTML=`
+
+                <img
+                    src="${level.image}"
+                    alt="${level.name}"
+                >
+
+                <div class="level-name">
+                    ${level.id}. ${level.name}
+                </div>
+
+            `;
+
+            card.addEventListener(
+                "click",
+                ()=>{
+
+                    if(!progress[level.id-1]){
+
+                        startLevel(
+                            level.id
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+/* =========================================================
+   INICIAR NIVEL
+========================================================= */
+
+function startLevel(id){
+
+    console.log(
+        "Iniciando nivel:",
+        id
+    );
+
+    if(id===6){
+
+        startLevel6();
+
+        return;
+
+    }
+
+    showScreen(juego);
+
+    document
+        .querySelectorAll(
+            "#game1,#game2,#game3,#game4,#game5"
+        )
+        .forEach(game=>{
+
+            game.style.display="none";
+
+        });
+
+    if(id===1){
+        startLevel1();
+    }
+    else if(id===2){
+        startLevel2();
+    }
+    else if(id===3){
+        startLevel3();
+    }
+    else if(id===4){
+        startLevel4();
+    }
+    else if(id===5){
+        startLevel5();
+    }
+
+}
+
+/* =========================================================
+   COMPLETAR NIVEL
+========================================================= */
+
+function completeLevel(id){
+
+    progress[id-1]=true;
+
+    saveProgress();
+
+    if(id===6){
+
+        stopGameMusic();
+
+        showFinalTransition();
+
+        return;
+
+    }
+
+    renderLevels();
+
+    showScreen(menu);
+
+}
+
+/* =========================================================
+   NIVEL 1
+========================================================= */
+
+let cakeHits=0;
+let cakeLives=3;
+let cakeInterval=null;
+
+function startLevel1(){
+
+    document
+        .getElementById("game1")
+        .style.display="block";
+
+    document
+        .getElementById("gameTitle")
+        .textContent=
+        "NIVEL 1 — MADERA";
+
+    document
+        .getElementById("gameDescription")
+        .textContent=
+        "¡Atrapa las 20 tortas! Pero cuidado... algunas pueden ser TNT.";
+
+    cakeHits=0;
+    cakeLives=3;
+
+    updateCakeStats();
+
+    const target =
+        document.getElementById(
+            "cakeTarget"
+        );
+
+    const area =
+        document.getElementById(
+            "cakeArea"
+        );
+
+    clearInterval(
+        cakeInterval
+    );
+
+    function moveCake(){
+
+        const isTnt =
+            Math.random()<.30;
+
+        target.dataset.tnt =
+            isTnt
+            ? "1"
+            : "0";
+
+        target.src =
+            isTnt
+            ? "tnt.jpg"
+            : "torta.jpg";
+
+        const maxX =
+            area.clientWidth -
+            target.offsetWidth;
+
+        const maxY =
+            area.clientHeight -
+            target.offsetHeight;
+
+        target.style.left =
+            Math.random() *
+            Math.max(0,maxX)
+            +"px";
+
+        target.style.top =
+            Math.random() *
+            Math.max(0,maxY)
+            +"px";
+
+    }
+
+    target.onclick=()=>{
+
+        if(
+            target.dataset.tnt==="1"
+        ){
+
+            cakeLives--;
+
+            updateCakeStats();
+
+            if(cakeLives<=0){
+
+                alert(
+                    "¡BOOOOM! El TNT te quitó todas las vidas."
+                );
+
+                cakeHits=0;
+                cakeLives=3;
+
+                updateCakeStats();
+
+            }
+
+        }else{
+
+            cakeHits++;
+
+            updateCakeStats();
+
+            if(cakeHits>=20){
+
+                clearInterval(
+                    cakeInterval
+                );
+
+                target.onclick=null;
+
+                completeLevel(1);
+
+                return;
+
+            }
+
+        }
+
+        moveCake();
+
+    };
+
+    moveCake();
+
+    cakeInterval =
+        setInterval(
+            moveCake,
+            600
+        );
+
+}
+
+function updateCakeStats(){
+
+    document
+        .getElementById("gameStats")
+        .innerHTML=`
+
+            <div>
+                TORTAS:
+                <span id="cakeCount">
+                    ${cakeHits}
+                </span>
+                / 20
+            </div>
+
+            <div>
+                VIDAS:
+                <span id="cakeLives">
+                    ${cakeLives}
+                </span>
+                ❤️
+            </div>
+
+        `;
+
+}
+
+/* =========================================================
+   NIVEL 2
+========================================================= */
+
+let mazeData=null;
+
+let mazePlayer={
+    x:1,
+    y:1
+};
+
+let mazeLives=3;
+
+function createMaze(){
+
+    const grid =
+        Array.from(
+            {length:15},
+            ()=>Array(15).fill(1)
+        );
+
+    function carve(x,y){
+
+        grid[y][x]=0;
+
+        const dirs=[
+            [2,0],
+            [-2,0],
+            [0,2],
+            [0,-2]
+        ].sort(
+            ()=>Math.random()-.5
+        );
+
+        for(
+            const [dx,dy]
+            of dirs
+        ){
+
+            const nx=x+dx;
+            const ny=y+dy;
+
+            if(
+                nx>0 &&
+                nx<14 &&
+                ny>0 &&
+                ny<14 &&
+                grid[ny][nx]===1
+            ){
+
+                grid[
+                    y+dy/2
+                ][
+                    x+dx/2
+                ]=0;
+
+                carve(nx,ny);
+
+            }
+
+        }
+
+    }
+
+    carve(1,1);
+
+    grid[13][13]=0;
+
+    return grid;
+
+}
+
+function findMazePath(grid){
+
+    const queue=[
+        [1,1,[]]
+    ];
+
+    const visited =
+        new Set([
+            "1,1"
+        ]);
+
+    while(queue.length){
+
+        const [
+            x,
+            y,
+            path
+        ] =
+            queue.shift();
+
+        if(
+            x===13 &&
+            y===13
+        ){
+
+            return path;
+
+        }
+
+        const dirs=[
+            [1,0,"right"],
+            [-1,0,"left"],
+            [0,1,"down"],
+            [0,-1,"up"]
+        ];
+
+        for(
+            const [
+                dx,
+                dy
+            ]
+            of dirs
+        ){
+
+            const nx=x+dx;
+            const ny=y+dy;
+
+            const key=
+                `${nx},${ny}`;
+
+            if(
+                nx>=0 &&
+                nx<15 &&
+                ny>=0 &&
+                ny<15 &&
+                grid[ny][nx]===0 &&
+                !visited.has(key)
+            ){
+
+                visited.add(key);
+
+                queue.push([
+                    nx,
+                    ny,
+                    [
+                        ...path,
+                        [nx,ny]
+                    ]
+                ]);
+
+            }
+
+        }
+
+    }
+
+    return null;
+
+}
+
+function startLevel2(){
+
+    document
+        .getElementById("game2")
+        .style.display="block";
+
+    document
+        .getElementById("gameTitle")
+        .textContent=
+        "NIVEL 2 — PIEDRA";
+
+    document
+        .getElementById("gameDescription")
+        .textContent=
+        "Encuentra el camino hasta el perro. ¡No pises la lava!";
+
+    mazeLives=3;
+
+    do{
+
+        mazeData =
+            createMaze();
+
+    }
+    while(
+        !findMazePath(
+            mazeData
+        )
+    );
+
+    const path =
+        findMazePath(
+            mazeData
+        );
+
+    const pathSet =
+        new Set(
+            path.map(
+                p=>`${p[0]},${p[1]}`
+            )
+        );
+
+    const traps=[];
+
+    for(
+        let y=1;
+        y<14;
+        y++
+    ){
+
+        for(
+            let x=1;
+            x<14;
+            x++
+        ){
+
+            if(
+                mazeData[y][x]===0 &&
+                !(x===1&&y===1) &&
+                !(x===13&&y===13) &&
+                !pathSet.has(
+                    `${x},${y}`
+                ) &&
+                Math.random()<.30
+            ){
+
+                traps.push([
+                    x,
+                    y
+                ]);
+
+            }
+
+        }
+
+    }
+
+    mazeData.traps=traps;
+
+    mazePlayer={
+        x:1,
+        y:1
+    };
+
+    updateMazeStats();
+    drawMaze();
+
+}
+
+function updateMazeStats(){
+
+    document
+        .getElementById("gameStats")
+        .innerHTML=`
+
+            <div>
+                ❤️ VIDAS:
+                ${mazeLives}
+            </div>
+
+        `;
+
+}
+
+function drawMaze(){
+
+    const maze =
+        document.getElementById(
+            "maze"
+        );
+
+    maze.innerHTML="";
+
+    for(
+        let y=0;
+        y<15;
+        y++
+    ){
+
+        for(
+            let x=0;
+            x<15;
+            x++
+        ){
+
+            const cell =
+                document.createElement(
+                    "div"
+                );
+
+            cell.className="cell";
+
+            if(
+                mazeData[y][x]===1
+            ){
+
+                cell.classList.add(
+                    "wall"
+                );
+
+                const img =
+                    document.createElement(
+                        "img"
+                    );
+
+                img.src="pared.jpg";
+
+                cell.appendChild(img);
+
+            }else{
+
+                const trap =
+                    mazeData.traps.some(
+                        t=>
+                            t[0]===x &&
+                            t[1]===y
+                    );
+
+                if(trap){
+
+                    cell.classList.add(
+                        "trap"
+                    );
+
+                    const img =
+                        document.createElement(
+                            "img"
+                        );
+
+                    img.src="lava.jpg";
+
+                    cell.appendChild(img);
+
+                }
+
+                if(
+                    x===13 &&
+                    y===13
+                ){
+
+                    cell.classList.add(
+                        "goal"
+                    );
+
+                    const img =
+                        document.createElement(
+                            "img"
+                        );
+
+                    img.src="perro.jpg";
+
+                    cell.appendChild(img);
+
+                }
+
+                if(
+                    x===mazePlayer.x &&
+                    y===mazePlayer.y
+                ){
+
+                    cell.classList.add(
+                        "player"
+                    );
+
+                    const img =
+                        document.createElement(
+                            "img"
+                        );
+
+                    img.src="steve.jpg";
+
+                    cell.appendChild(img);
+
+                }
+
+            }
+
+            maze.appendChild(cell);
+
+        }
+
+    }
+
+}
+
+function moveMaze(direction){
+
+    if(!mazeData){
+        return;
+    }
+
+    let nx=
+        mazePlayer.x;
+
+    let ny=
+        mazePlayer.y;
+
+    if(direction==="up"){
+        ny--;
+    }
+
+    if(direction==="down"){
+        ny++;
+    }
+
+    if(direction==="left"){
+        nx--;
+    }
+
+    if(direction==="right"){
+        nx++;
+    }
+
+    if(
+        nx<0 ||
+        ny<0 ||
+        nx>=15 ||
+        ny>=15 ||
+        mazeData[ny][nx]===1
+    ){
+
+        return;
+
+    }
+
+    mazePlayer.x=nx;
+    mazePlayer.y=ny;
+
+    const trap =
+        mazeData.traps.some(
+            t=>
+                t[0]===nx &&
+                t[1]===ny
+        );
+
+    if(trap){
+
+        mazeLives--;
+
+        updateMazeStats();
+
+        if(mazeLives<=0){
+
+            alert(
+                "Te quedaste sin vidas."
+            );
+
+            startLevel2();
+
+            return;
+
+        }
+
+        mazePlayer={
+            x:1,
+            y:1
+        };
+
+    }
+
+    if(
+        nx===13 &&
+        ny===13
+    ){
+
+        completeLevel(2);
+
+        return;
+
+    }
+
+    drawMaze();
+
+}
+
+/* =========================================================
+   NIVEL 3
+========================================================= */
+
+const memoryObjects=[
+
+    "manzana.jpg",
+    "libro.jpg",
+    "antorcha.jpg",
+    "amuleto.jpg",
+    "carne de pollo.jpg",
+    "hueso.jpg",
+    "paja.jpg",
+    "pan.jpg",
+    "espada.jpg",
+    "perla.jpg",
+    "alas.jpg",
+    "arco.jpg"
+
+];
+
+let memorySequence=[];
+let memoryUser=[];
+let memoryRound=0;
+let memoryLocked=true;
+
+function startLevel3(){
+
+    document
+        .getElementById("game3")
+        .style.display="block";
+
+    document
+        .getElementById("gameTitle")
+        .textContent=
+        "NIVEL 3 — HIERRO";
+
+    document
+        .getElementById("gameDescription")
+        .textContent=
+        "Observa los 3 objetos iluminados y repite exactamente el orden.";
+
+    memoryRound=0;
+
+    startMemoryRound();
+
+}
+
+function renderMemory(){
+
+    const grid =
+        document.getElementById(
+            "memoryGrid"
+        );
+
+    grid.innerHTML="";
+
+    memoryObjects.forEach(
+        (image,index)=>{
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className=
+                "memory-card";
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+            img.src=image;
+
+            card.appendChild(img);
+
+            card.addEventListener(
+                "click",
+                ()=>{
+
+                    if(memoryLocked){
+                        return;
+                    }
+
+                    const expected =
+                        memorySequence[
+                            memoryUser.length
+                        ];
+
+                    if(index===expected){
+
+                        card.classList.add(
+                            "selected"
+                        );
+
+                        memoryUser.push(
+                            index
+                        );
+
+                        if(
+                            memoryUser.length===
+                            memorySequence.length
+                        ){
+
+                            memoryLocked=true;
+
+                            setTimeout(
+                                ()=>{
+
+                                    memoryRound++;
+
+                                    if(
+                                        memoryRound>=5
+                                    ){
+
+                                        completeLevel(3);
+
+                                    }else{
+
+                                        startMemoryRound();
+
+                                    }
+
+                                },
+                                700
+                            );
+
+                        }
+
+                    }else{
+
+                        card.classList.add(
+                            "wrong"
+                        );
+
+                        memoryLocked=true;
+
+                        setTimeout(
+                            ()=>{
+
+                                memoryUser=[];
+                                memoryRound=0;
+
+                                startMemoryRound();
+
+                            },
+                            600
+                        );
+
+                    }
+
+                }
+            );
+
+            grid.appendChild(card);
+
+        }
+    );
+
+}
+
+function startMemoryRound(){
+
+    memoryUser=[];
+    memorySequence=[];
+    memoryLocked=true;
+
+    renderMemory();
+
+    const indexes=[];
+
+    while(
+        indexes.length<3
+    ){
+
+        const random =
+            Math.floor(
+                Math.random()*
+                memoryObjects.length
+            );
+
+        if(
+            !indexes.includes(random)
+        ){
+
+            indexes.push(random);
+
+        }
+
+    }
+
+    memorySequence=indexes;
+
+    let step=0;
+
+    const cards =
+        document.querySelectorAll(
+            ".memory-card"
+        );
+
+    function illuminate(){
+
+        if(step>=3){
+
+            setTimeout(
+                ()=>{
+
+                    cards.forEach(
+                        card=>{
+                            card.classList.remove(
+                                "lit"
+                            );
+                        }
+                    );
+
+                    memoryLocked=false;
+
+                },
+                500
+            );
+
+            return;
+
+        }
+
+        cards[
+            indexes[step]
+        ]
+        .classList.add("lit");
+
+        setTimeout(
+            ()=>{
+
+                cards[
+                    indexes[step]
+                ]
+                .classList.remove("lit");
+
+                step++;
+
+                setTimeout(
+                    illuminate,
+                    200
+                );
+
+            },
+            650
+        );
+
+    }
+
+    setTimeout(
+        illuminate,
+        500
+    );
+
+    document
+        .getElementById("gameStats")
+        .innerHTML=`
+
+            <div>
+                RONDA:
+                ${memoryRound+1}
+                / 5
+            </div>
+
+        `;
+
+}
+
+/* =========================================================
+   NIVEL 4
+========================================================= */
+
+const secretCode="4822";
+
+let currentGuess="";
+let codeAttempts=0;
+
+function startLevel4(){
+
+    document
+        .getElementById("game4")
+        .style.display="block";
+
+    document
+        .getElementById("gameTitle")
+        .textContent=
+        "NIVEL 4 — ORO";
+
+    document
+        .getElementById("gameDescription")
+        .textContent=
+        "Descifra el código secreto. Tienes 6 intentos.";
+
+    currentGuess="";
+    codeAttempts=0;
+
+    updateCodeDisplay();
+
+    document
+        .getElementById("codeHint")
+        .textContent=
+        "Pista: hay 4 números.";
+
+    document
+        .getElementById("gameStats")
+        .innerHTML=
+        "<div>INTENTOS: 0 / 6</div>";
+
+}
+
+function updateCodeDisplay(){
+
+    document
+        .getElementById("codeDisplay")
+        .textContent=
+        currentGuess.padEnd(
+            4,
+            "-"
+        );
+
+}
+
+function pressCode(number){
+
+    if(
+        currentGuess.length>=4
+    ){
+        return;
+    }
+
+    currentGuess+=number;
+
+    updateCodeDisplay();
+
+}
+
+function clearCode(){
+
+    currentGuess="";
+
+    updateCodeDisplay();
+
+}
+
+function submitCode(){
+
+    if(
+        currentGuess.length!==4
+    ){
+
+        document
+            .getElementById("codeHint")
+            .textContent=
+            "Necesitas escribir 4 números.";
+
+        return;
+
+    }
+
+    codeAttempts++;
+
+    if(
+        currentGuess===secretCode
+    ){
+
+        document
+            .getElementById("codeHint")
+            .textContent=
+            "¡CÓDIGO CORRECTO!";
+
+        setTimeout(
+            ()=>{
+                completeLevel(4);
+            },
+            700
+        );
+
+        return;
+
+    }
+
+    let exact=0;
+
+    for(
+        let i=0;
+        i<4;
+        i++
+    ){
+
+        if(
+            currentGuess[i]===
+            secretCode[i]
+        ){
+
+            exact++;
+
+        }
+
+    }
+
+    const codeCount={};
+    const guessCount={};
+
+    for(
+        const digit of secretCode
+    ){
+
+        codeCount[digit]=
+            (codeCount[digit]||0)+1;
+
+    }
+
+    for(
+        const digit of currentGuess
+    ){
+
+        guessCount[digit]=
+            (guessCount[digit]||0)+1;
+
+    }
+
+    let correct=0;
+
+    for(
+        const digit in guessCount
+    ){
+
+        if(
+            codeCount[digit]
+        ){
+
+            correct+=
+                Math.min(
+                    guessCount[digit],
+                    codeCount[digit]
+                );
+
+        }
+
+    }
+
+    correct-=exact;
+
+    document
+        .getElementById("codeHint")
+        .textContent=
+        `${exact} en posición correcta. ${correct} correcto(s) pero en otra posición.`;
+
+    document
+        .getElementById("gameStats")
+        .innerHTML=
+        `<div>INTENTOS: ${codeAttempts} / 6</div>`;
+
+    currentGuess="";
+
+    updateCodeDisplay();
+
+    if(
+        codeAttempts>=6
+    ){
+
+        setTimeout(
+            ()=>{
+
+                alert(
+                    "No encontraste el código. ¡Inténtalo otra vez!"
+                );
+
+                startLevel4();
+
+            },
+            500
+        );
+
+    }
+
+}
+
+/* =========================================================
+   NIVEL 5
+========================================================= */
+
+let reactionRound=0;
+let reactionTimeout=null;
+
+function startLevel5(){
+
+    document
+        .getElementById("game5")
+        .style.display="block";
+
+    document
+        .getElementById("gameTitle")
+        .textContent=
+        "NIVEL 5 — DIAMANTE";
+
+    document
+        .getElementById("gameDescription")
+        .textContent=
+        "¡Atrapa el diamante 20 veces! Cada vez aparecerá más rápido.";
+
+    reactionRound=0;
+
+    updateReactionStats();
+    moveReactionTarget();
+
+}
+
+function updateReactionStats(){
+
+    document
+        .getElementById("gameStats")
+        .innerHTML=
+        `<div>DIAMANTES: ${reactionRound} / 20</div>`;
+
+}
+
+function moveReactionTarget(){
+
+    const area =
+        document.getElementById(
+            "reactionArea"
+        );
+
+    const target =
+        document.getElementById(
+            "reactionTarget"
+        );
+
+    const maxX =
+        area.clientWidth -
+        target.offsetWidth;
+
+    const maxY =
+        area.clientHeight -
+        target.offsetHeight;
+
+    target.style.left =
+        Math.random() *
+        Math.max(
+            0,
+            maxX
+        )
+        +"px";
+
+    target.style.top =
+        Math.random() *
+        Math.max(
+            0,
+            maxY
+        )
+        +"px";
+
+    const time =
+        Math.max(
+            900,
+            1550 -
+            reactionRound*25
+        );
+
+    clearTimeout(
+        reactionTimeout
+    );
+
+    reactionTimeout =
+        setTimeout(
+            moveReactionTarget,
+            time
+        );
+
+}
+
+document
+    .getElementById("reactionTarget")
+    .addEventListener(
+        "click",
+        ()=>{
+
+            reactionRound++;
+
+            updateReactionStats();
+
+            if(
+                reactionRound>=20
+            ){
+
+                clearTimeout(
+                    reactionTimeout
+                );
+
+                completeLevel(5);
+
+                return;
+
+            }
+
+            moveReactionTarget();
+
+        }
+    );
+
+/* =========================================================
+   NIVEL 6 — MICHI CONTRA BOT
+========================================================= */
+
+let ticBoardState=[];
+let ticPlayerTurn=true;
+let ticGameOver=false;
+let ticAttempt=1;
+
+/* =========================================================
+   INICIAR NIVEL 6
+========================================================= */
+
+function startLevel6(){
+
+    showScreen(juego6);
+
+    ticAttempt=1;
+
+    startTicAttempt();
+
+}
+
+function startTicAttempt(){
+
+    /* EXACTAMENTE 9 POSICIONES */
+
+   ticBoardState=[
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+];
+    ticPlayerTurn=true;
+    ticGameOver=false;
+
+    document
+        .getElementById("ticAttempt")
+        .textContent=
+        ticAttempt;
+
+    document
+        .getElementById("ticMessage")
+        .textContent=
+        "¡Haz tu movimiento! Tú eres ❌.";
+
+    renderTicBoard();
+
+}
+
+/* =========================================================
+   DIBUJAR MICHI
+========================================================= */
+
+function renderTicBoard(){
+
+    const board =
+        document.getElementById(
+            "ticBoard"
+        );
+
+    board.innerHTML="";
+
+    ticBoardState.forEach(
+        (value,index)=>{
+
+            const cell =
+                document.createElement(
+                    "div"
+                );
+
+            cell.className=
+                "tic-cell";
+
+            if(value==="X"){
+
+                cell.classList.add("x");
+
+                cell.textContent="❌";
+
+            }
+            else if(value==="O"){
+
+                cell.classList.add("o");
+
+                cell.textContent="⭕";
+
+            }
+
+            cell.addEventListener(
+                "click",
+                ()=>{
+
+                    playerTicMove(index);
+
+                }
+            );
+
+            board.appendChild(cell);
+
+        }
+    );
+
+}
+
+/* =========================================================
+   MOVIMIENTO DEL JUGADOR
+========================================================= */
+
+function playerTicMove(index){
+
+    if(
+        ticGameOver ||
+        !ticPlayerTurn ||
+        ticBoardState[index]!==""
+    ){
+
+        return;
+
+    }
+
+    ticBoardState[index]="X";
+
+    ticPlayerTurn=false;
+
+    renderTicBoard();
+
+    if(checkTicWinner("X")){
+
+        handleTicPlayerWin();
+
+        return;
+
+    }
+
+    if(isTicDraw()){
+
+        handleTicDraw();
+
+        return;
+
+    }
+
+    document
+        .getElementById("ticMessage")
+        .textContent=
+        "El BOT está pensando...";
+
+    setTimeout(
+        botTicMove,
+        450
+    );
+
+}
+
+/* =========================================================
+   COMPROBAR GANADOR
+========================================================= */
+
+function checkTicWinner(player){
+
+    const wins=[
+
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+
+        [0,4,8],
+        [2,4,6]
+
+    ];
+
+    return wins.some(
+        combo=>
+            combo.every(
+                index=>
+                    ticBoardState[index]===player
+            )
+    );
+
+}
+
+function isTicDraw(){
+
+    return ticBoardState.every(
+        cell=>cell!==""
+    );
+
+}
+
+function findWinningMove(player){
+
+    for(
+        let i=0;
+        i<9;
+        i++
+    ){
+
+        if(
+            ticBoardState[i]===""
+        ){
+
+            ticBoardState[i]=player;
+
+            const win =
+                checkTicWinner(player);
+
+            ticBoardState[i]="";
+
+            if(win){
+
+                return i;
+
+            }
+
+        }
+
+    }
+
+    return -1;
+
+}
+
+/* =========================================================
+   BOT
+========================================================= */
+
+function botTicMove(){
+
+    if(
+        ticGameOver
+    ){
+
+        return;
+
+    }
+
+    let move=-1;
+
+    if(
+        ticAttempt<=7
+    ){
+
+        move=findWinningMove("O");
+
+        if(move===-1){
+
+            move=findWinningMove("X");
+
+        }
+
+        if(
+            move===-1 &&
+            ticBoardState[4]===""
+        ){
+
+            move=4;
+
+        }
+
+        if(move===-1){
+
+            const corners=[
+                0,
+                2,
+                6,
+                8
+            ].filter(
+                i=>ticBoardState[i]===""
+            );
+
+            if(corners.length){
+
+                move=
+                    corners[
+                        Math.floor(
+                            Math.random()*
+                            corners.length
+                        )
+                    ];
+
+            }
+
+        }
+
+        if(move===-1){
+
+            const empty =
+                ticBoardState
+                    .map(
+                        (v,i)=>
+                            v===""
+                            ? i
+                            : -1
+                    )
+                    .filter(
+                        i=>i!==-1
+                    );
+
+            if(empty.length){
+
+                move=
+                    empty[
+                        Math.floor(
+                            Math.random()*
+                            empty.length
+                        )
+                    ];
+
+            }
+
+        }
+
+    }
+    else{
+
+        const empty =
+            ticBoardState
+                .map(
+                    (v,i)=>
+                        v===""
+                        ? i
+                        : -1
+                )
+                .filter(
+                    i=>i!==-1
+                );
+
+        if(empty.length){
+
+            const playerWin =
+                findWinningMove("X");
+
+            if(playerWin!==-1){
+
+                const otherMoves =
+                    empty.filter(
+                        i=>i!==playerWin
+                    );
+
+                if(otherMoves.length){
+
+                    move=
+                        otherMoves[
+                            Math.floor(
+                                Math.random()*
+                                otherMoves.length
+                            )
+                        ];
+
+                }
+                else{
+
+                    move=playerWin;
+
+                }
+
+            }
+            else{
+
+                if(ticAttempt===9){
+
+                    const preferred=[
+                        0,
+                        2,
+                        6,
+                        8,
+                        1,
+                        3,
+                        5,
+                        7,
+                        4
+                    ].filter(
+                        i=>ticBoardState[i]===""
+                    );
+
+                    if(preferred.length){
+
+                        move=preferred[0];
+
+                    }
+
+                }
+
+                if(move===-1){
+
+                    move=
+                        empty[
+                            Math.floor(
+                                Math.random()*
+                                empty.length
+                            )
+                        ];
+
+                }
+
+            }
+
+        }
+
+    }
+
+    if(move===-1){
+
+        ticPlayerTurn=true;
+
+        return;
+
+    }
+
+    ticBoardState[move]="O";
+
+    ticPlayerTurn=true;
+
+    renderTicBoard();
+
+    if(checkTicWinner("O")){
+
+        handleTicBotWin();
+
+        return;
+
+    }
+
+    if(isTicDraw()){
+
+        handleTicDraw();
+
+        return;
+
+    }
+
+    document
+        .getElementById("ticMessage")
+        .textContent=
+        "¡Tu turno!";
+
+}
+
+/* =========================================================
+   GANÓ JUGADOR
+========================================================= */
+
+function handleTicPlayerWin(){
+
+    ticGameOver=true;
+
+    document
+        .getElementById("ticMessage")
+        .textContent=
+        "¡¡¡GANASTEEEE!!! 😭🎉";
+
+    if(ticAttempt>=8){
+
+        setTimeout(
+            ()=>{
+
+                completeLevel(6);
+
+            },
+            1000
+        );
+
+        return;
+
+    }
+
+    setTimeout(
+        ()=>{
+
+            ticAttempt++;
+
+            startTicAttempt();
+
+        },
+        1200
+    );
+
+}
+
+/* =========================================================
+   GANÓ BOT
+========================================================= */
+
+function handleTicBotWin(){
+
+    ticGameOver=true;
+
+    document
+        .getElementById("ticMessage")
+        .textContent=
+        "El BOT ganó esta vez 🤖";
+
+    ticAttempt++;
+
+    if(ticAttempt>9){
+
+        ticAttempt=8;
+
+    }
+
+    setTimeout(
+        ()=>{
+
+            startTicAttempt();
+
+        },
+        1200
+    );
+
+}
+
+/* =========================================================
+   EMPATE
+========================================================= */
+
+function handleTicDraw(){
+
+    ticGameOver=true;
+
+    document
+        .getElementById("ticMessage")
+        .textContent=
+        "¡EMPATE! El BOT no pudo ganarte 🤖";
+
+    ticAttempt++;
+
+    if(ticAttempt>9){
+
+        ticAttempt=8;
+
+    }
+
+    setTimeout(
+        ()=>{
+
+            startTicAttempt();
+
+        },
+        1200
+    );
+
+}
+
+/* =========================================================
+   TRANSICIÓN FINAL
+========================================================= */
+
+function showFinalTransition(){
+
+    showScreen(
+        transitionScreen
+    );
+
+    const words=[
+
+        "NIVEL 6 COMPLETADO...",
+        "VERIFICANDO RESULTADO...",
+        "TODOS LOS NIVELES COMPLETADOS...",
+        "SISTEMA DESBLOQUEADO...",
+        "PREPARANDO LA SORPRESA...",
+        "🎂"
+
+    ];
+
+    let index=0;
+
+    transitionText.classList.add(
+        "transicion-glitch"
+    );
+
+    function nextWord(){
+
+        if(index<words.length){
+
+            transitionText.textContent=
+                words[index];
+
+            transitionScreen.classList.add(
+                "screen-flash"
+            );
+
+            setTimeout(
+                ()=>{
+
+                    transitionScreen.classList.remove(
+                        "screen-flash"
+                    );
+
+                },
+                180
+            );
+
+            index++;
+
+            setTimeout(
+                nextWord,
+                750
+            );
+
+            return;
+
+        }
+
+        transitionText.textContent=
+            "🎂";
+
+        transitionScreen.classList.add(
+            "screen-flash"
+        );
+
+        setTimeout(
+            ()=>{
+
+                transitionScreen.classList.remove(
+                    "screen-flash"
+                );
+
+                transitionText.classList.remove(
+                    "transicion-glitch"
+                );
+
+                showScreen(
+                    blackScreen
+                );
+
+                setTimeout(
+                    ()=>{
+
+                        showScreen(
+                            finalScreen
+                        );
+
+                    },
+                    2500
+                );
+
+            },
+            700
+        );
+
+    }
+
+    nextWord();
+
+}
+
+/* =========================================================
+   TECLADO NIVEL 2
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    e=>{
+
+        if(
+            !juego.classList.contains(
+                "active"
+            )
+        ){
+
+            return;
+
+        }
+
+        if(
+            document
+                .getElementById("game2")
+                .style.display!=="none"
+        ){
+
+            if(
+                e.key==="ArrowUp" ||
+                e.key.toLowerCase()==="w"
+            ){
+
+                e.preventDefault();
+
+                moveMaze("up");
+
+            }
+
+            if(
+                e.key==="ArrowDown" ||
+                e.key.toLowerCase()==="s"
+            ){
+
+                e.preventDefault();
+
+                moveMaze("down");
+
+            }
+
+            if(
+                e.key==="ArrowLeft" ||
+                e.key.toLowerCase()==="a"
+            ){
+
+                e.preventDefault();
+
+                moveMaze("left");
+
+            }
+
+            if(
+                e.key==="ArrowRight" ||
+                e.key.toLowerCase()==="d"
+            ){
+
+                e.preventDefault();
+
+                moveMaze("right");
+
+            }
+
+        }
+
+    }
+);
+
+/* =========================================================
+   VOLVER AL MENÚ
+========================================================= */
+
+function backToMenu(){
+
+    clearInterval(
+        cakeInterval
+    );
+
+    clearTimeout(
+        reactionTimeout
+    );
+
+    renderLevels();
+
+    showScreen(menu);
+
+}
+
+/* =========================================================
+   REINICIAR
+========================================================= */
+
+document
+    .getElementById("resetButton")
+    .addEventListener(
+        "click",
+        ()=>{
+
+            const confirmReset =
+                confirm(
+                    "¿Seguro que quieres borrar todo el progreso?"
+                );
+
+            if(!confirmReset){
+                return;
+            }
+
+            progress=[
+
+                false,
+                false,
+                false,
+                false,
+                false,
+                false
+
+            ];
+
+            saveProgress();
+
+            renderLevels();
+
+        }
+    );
+
+/* =========================================================
+   INICIO REAL
+========================================================= */
+
+renderLevels();
+
+</script>
+
+</body>
+</html>
